@@ -5,12 +5,11 @@ Version:	0.6
 Release:	2
 License:	GPL v2
 Group:		X11/Applications/Games
-Source0:	http://prdownloads.sourceforge.net/spacerocks/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/spacerocks/%{name}-%{version}.tar.gz
 Source1:	%{name}.png
 Patch0:		%{name}-FHS+DESTDIR.patch
 URL:		http://spacerocks.sourceforge.net/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
 
 %description
 Dodge the rocks for as long as possible until you die. Kill greeblies
