@@ -6,6 +6,7 @@ Release:	2
 License:	GPL v2
 Group:		X11/Applications/Games
 Source0:	http://dl.sourceforge.net/spacerocks/%{name}-%{version}.tar.gz
+# Source0-md5:	a82a564a6530e60e7f041f7d95c4cae8
 Source1:	%{name}.png
 Patch0:		%{name}-FHS+DESTDIR.patch
 URL:		http://spacerocks.sourceforge.net/
