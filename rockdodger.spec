@@ -1,7 +1,8 @@
 Summary:	Dodge the rocks baby!
+Summary(pl):	Gra polegaj±ca na omijaniu kamieni
 Name:		rockdodger
 Version:	0.6
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications/Games
 Source0:	http://prdownloads.sourceforge.net/spacerocks/%{name}-%{version}.tar.gz
@@ -17,13 +18,16 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Dodge the rocks for as long as possible until you die. Kill greeblies
 to make the universe safe for non-greeblie life once again.
 
-%prep
+%description -l pl
+W tej grze trzeba omijaæ kamienie tak d³ugo jak to mo¿liwe, do
+¶mierci. Trzeba te¿ zabijaæ potwory, aby uczyniæ ¶wiat z powrotem
+bezpiecznym dla innych gatunków.
 
+%prep
 %setup -q
 %patch0 -p1
 
 %build
-
 %{__make} \
 	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags}" \
