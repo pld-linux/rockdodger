@@ -1,7 +1,7 @@
-diff -durN rockdodger-0.6.orig/Makefile rockdodger-0.6/Makefile
---- rockdodger-0.6.orig/Makefile	Sun Jul 28 23:16:52 2002
-+++ rockdodger-0.6/Makefile	Tue Aug  6 09:56:06 2002
-@@ -15,14 +15,28 @@
+diff -uNr rockdodger-0.6.0a/Makefile rockdodger-0.6.0a-new/Makefile
+--- rockdodger-0.6.0a/Makefile	Sun Nov 17 23:56:12 2002
++++ rockdodger-0.6.0a-new/Makefile	Thu Jan 29 15:32:51 2004
+@@ -15,14 +15,27 @@
  #   along with this program; if not, write to the Free Software
  #   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  
@@ -11,7 +11,7 @@ diff -durN rockdodger-0.6.orig/Makefile rockdodger-0.6/Makefile
 +datadir=$(prefix)/share
 +vardir=$(prefix)/var
 +
- VERSION=0.6
+ VERSION=0.6.0a
  PACKAGENAME=rockdodger
  NEWD=$(PACKAGENAME)-$(VERSION)
  TMP=/tmp
@@ -23,7 +23,6 @@ diff -durN rockdodger-0.6.orig/Makefile rockdodger-0.6/Makefile
 +pkgvardir=$(vardir)/lib/$(PACKAGENAME)
 +
 +DEFINES=-DVERSION=\"$(VERSION)\" -DCOMPILEDATE=\"28/7/02\" -DDATADIR=\"$(pkgdatadir)\" -DVARDIR=\"$(pkgvardir)\"
-+
 +CC=cc
 +CFLAGS=-g
 +LDFLAGS=
@@ -31,7 +30,7 @@ diff -durN rockdodger-0.6.orig/Makefile rockdodger-0.6/Makefile
  #SOUNDLIBRARIES=-lvorbisfile -lvorbis -logg
  #SOUNDLIBRARIES=
  SOUNDLIBRARIES=-lSDL_mixer
-@@ -32,10 +46,10 @@
+@@ -32,10 +45,10 @@
  all:	$(EXENAME)
  
  .c.o:
@@ -44,7 +43,7 @@ diff -durN rockdodger-0.6.orig/Makefile rockdodger-0.6/Makefile
  
  clean:
  	rm *.o $(EXENAME)
-@@ -49,12 +63,13 @@
+@@ -49,12 +62,13 @@
  	mv $(TMP)/$(NEWD).tar.gz .
  
  install:	all
@@ -66,9 +65,9 @@ diff -durN rockdodger-0.6.orig/Makefile rockdodger-0.6/Makefile
 +	touch $(DESTDIR)$(pkgvardir)/.highscore
 +	chmod a+rw $(DESTDIR)$(pkgvardir)/.highscore
  
-diff -durN rockdodger-0.6.orig/main.c rockdodger-0.6/main.c
---- rockdodger-0.6.orig/main.c	Sun Jul 28 23:16:52 2002
-+++ rockdodger-0.6/main.c	Tue Aug  6 09:49:53 2002
+diff -uNr rockdodger-0.6.0a/main.c rockdodger-0.6.0a-new/main.c
+--- rockdodger-0.6.0a/main.c	Sun Nov 17 23:56:12 2002
++++ rockdodger-0.6.0a-new/main.c	Thu Jan 29 14:58:14 2004
 @@ -452,7 +452,7 @@
      FILE *f;
      mode_t mask;
