@@ -25,17 +25,17 @@ to make the universe safe for non-greeblie life once again.
 %build
 
 %{__make} \
-	bindir="%{_bindir}" \
-	datadir="%{_datadir}/%{name}" \
-	vardir="%{_localstatedir}/lib/%{name}" 
+	CC="%{__cc}" \
+	CFLAGS="%{rpmcflags}" \
+	prefix="%{_prefix}" \
+	vardir="%{_localstatedir}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	bindir="%{_bindir}" \
-	datadir="%{_datadir}/%{name}" \
-	vardir="%{_localstatedir}/lib/%{name}" \
+	prefix="%{_prefix}" \
+	vardir="%{_localstatedir}" \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %files
