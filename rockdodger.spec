@@ -11,8 +11,6 @@ Patch0:		%{name}-FHS+DESTDIR.patch
 URL:		http://spacerocks.sourceforge.net/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
-%define		_mandir		%{_prefix}/man
 
 %description
 Dodge the rocks for as long as possible until you die. Kill greeblies
