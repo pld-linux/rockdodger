@@ -43,7 +43,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(2755,root,games) %{_bindir}/*
 %{_datadir}/%{name}
 %dir %{_localstatedir}/lib/%{name}
-%attr(0664,root,games) %{_localstatedir}/lib/%{name}/.highscore
+%attr(0664,root,games) %config(noreplace) %verify(not md5 size mtime) %{_localstatedir}/lib/%{name}/.highscore
 
 %clean
 rm -rf $RPM_BUILD_ROOT
