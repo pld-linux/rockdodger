@@ -1,25 +1,50 @@
 diff -durN rockdodger-0.6.orig/Makefile rockdodger-0.6/Makefile
 --- rockdodger-0.6.orig/Makefile	Sun Jul 28 23:16:52 2002
-+++ rockdodger-0.6/Makefile	Tue Aug  6 09:24:32 2002
-@@ -15,11 +15,16 @@
++++ rockdodger-0.6/Makefile	Tue Aug  6 09:56:06 2002
+@@ -15,14 +15,28 @@
  #   along with this program; if not, write to the Free Software
  #   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  
 +DESTDIR=
-+bindir=/usr/games
-+datadir=/usr/share/rockdodger
-+vardir=/var/lib/rockdodger
++prefix=/usr/local
++bindir=$(prefix)/bin
++datadir=$(prefix)/share
++vardir=$(prefix)/var
 +
  VERSION=0.6
  PACKAGENAME=rockdodger
  NEWD=$(PACKAGENAME)-$(VERSION)
  TMP=/tmp
 -OPTIONS=-DVERSION=\"$(VERSION)\" -DCOMPILEDATE=\"28/7/02\"
-+OPTIONS=-DVERSION=\"$(VERSION)\" -DCOMPILEDATE=\"28/7/02\" -DDATADIR=\"$(datadir)\" -DVARDIR=\"$(vardir)\"
  SOUNDSOURCE=sound
  EXENAME=rockdodger
  
-@@ -49,12 +54,13 @@
++pkgdatadir=$(datadir)/$(PACKAGENAME)
++pkgvardir=$(vardir)/lib/$(PACKAGENAME)
++
++DEFINES=-DVERSION=\"$(VERSION)\" -DCOMPILEDATE=\"28/7/02\" -DDATADIR=\"$(pkgdatadir)\" -DVARDIR=\"$(pkgvardir)\"
++
++CC=cc
++CFLAGS=-g
++LDFLAGS=
++
+ #SOUNDLIBRARIES=-lvorbisfile -lvorbis -logg
+ #SOUNDLIBRARIES=
+ SOUNDLIBRARIES=-lSDL_mixer
+@@ -32,10 +46,10 @@
+ all:	$(EXENAME)
+ 
+ .c.o:
+-	cc -c -g $? `sdl-config --cflags` $(OPTIONS)
++	$(CC) -c $(CFLAGS) $? `sdl-config --cflags` $(DEFINES)
+ 
+ $(EXENAME):	SFont.o $(SOUNDSOURCE).o main.o
+-	cc -o $(EXENAME) $+ $(LIBRARIES)
++	$(CC) $(LDFLAGS) -o $(EXENAME) $+ $(LIBRARIES)
+ 
+ clean:
+ 	rm *.o $(EXENAME)
+@@ -49,12 +63,13 @@
  	mv $(TMP)/$(NEWD).tar.gz .
  
  install:	all
@@ -33,17 +58,17 @@ diff -durN rockdodger-0.6.orig/Makefile rockdodger-0.6/Makefile
 -	chmod a+rw /usr/share/rockdodger/.highscore
 +	mkdir -p $(DESTDIR)$(bindir)
 +	cp $(EXENAME) $(DESTDIR)$(bindir)
-+	mkdir -p $(DESTDIR)$(datadir)
-+	cp data/*.{bmp,png,wav,mod} $(DESTDIR)$(datadir)
-+	chmod a+r $(DESTDIR)$(datadir)/*
-+	chmod a+r $(DESTDIR)$(datadir)
-+	mkdir -p $(DESTDIR)$(vardir)
-+	touch $(DESTDIR)$(vardir)/.highscore
-+	chmod a+rw $(DESTDIR)$(vardir)/.highscore
++	mkdir -p $(DESTDIR)$(pkgdatadir)
++	cp data/*.{bmp,png,wav,mod} $(DESTDIR)$(pkgdatadir)
++	chmod a+r $(DESTDIR)$(pkgdatadir)/*
++	chmod a+r $(DESTDIR)$(pkgdatadir)
++	mkdir -p $(DESTDIR)$(pkgvardir)
++	touch $(DESTDIR)$(pkgvardir)/.highscore
++	chmod a+rw $(DESTDIR)$(pkgvardir)/.highscore
  
 diff -durN rockdodger-0.6.orig/main.c rockdodger-0.6/main.c
 --- rockdodger-0.6.orig/main.c	Sun Jul 28 23:16:52 2002
-+++ rockdodger-0.6/main.c	Tue Aug  6 09:24:20 2002
++++ rockdodger-0.6/main.c	Tue Aug  6 09:49:53 2002
 @@ -452,7 +452,7 @@
      FILE *f;
      mode_t mask;
