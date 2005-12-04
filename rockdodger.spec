@@ -11,8 +11,8 @@ Source1:	%{name}.png
 Patch0:		%{name}-FHS+DESTDIR.patch
 URL:		http://spacerocks.sourceforge.net/
 BuildRequires:	SDL-devel
-BuildRequires:	SDL_mixer-devel
 BuildRequires:	SDL_image-devel
+BuildRequires:	SDL_mixer-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -48,7 +48,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(2755,root,games) %{_bindir}/*
 %{_datadir}/%{name}
 %dir %{_localstatedir}/lib/%{name}
-%attr(0664,root,games) %config(noreplace) %verify(not md5 size mtime) %{_localstatedir}/lib/%{name}/.highscore
+%attr(664,root,games) %config(noreplace) %verify(not md5 mtime size) %{_localstatedir}/lib/%{name}/.highscore
 
 %clean
 rm -rf $RPM_BUILD_ROOT
