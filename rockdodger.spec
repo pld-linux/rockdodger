@@ -1,5 +1,5 @@
 Summary:	Dodge the rocks baby!
-Summary(pl):	Gra polegaj±ca na omijaniu kamieni
+Summary(pl.UTF-8):   Gra polegajÄ…ca na omijaniu kamieni
 Name:		rockdodger
 Version:	0.6.0a
 Release:	1
@@ -19,10 +19,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Dodge the rocks for as long as possible until you die. Kill greeblies
 to make the universe safe for non-greeblie life once again.
 
-%description -l pl
-W tej grze trzeba omijaæ kamienie tak d³ugo jak to mo¿liwe, do
-¶mierci. Trzeba te¿ zabijaæ potwory, aby uczyniæ ¶wiat z powrotem
-bezpiecznym dla innych gatunków.
+%description -l pl.UTF-8
+W tej grze trzeba omijaÄ‡ kamienie tak dÅ‚ugo jak to moÅ¼liwe, do
+Å›mierci. Trzeba teÅ¼ zabijaÄ‡ potwory, aby uczyniÄ‡ Å›wiat z powrotem
+bezpiecznym dla innych gatunkÃ³w.
 
 %prep
 %setup -q
