@@ -1,5 +1,5 @@
 Summary:	Dodge the rocks baby!
-Summary(pl.UTF-8):   Gra polegająca na omijaniu kamieni
+Summary(pl.UTF-8):	Gra polegająca na omijaniu kamieni
 Name:		rockdodger
 Version:	0.6.0a
 Release:	1
