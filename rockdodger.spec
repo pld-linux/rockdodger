@@ -9,6 +9,7 @@ Source0:	http://dl.sourceforge.net/spacerocks/%{name}-%{version}.tar.gz
 # Source0-md5:	dbeeabe6bbb57321ba221345d6390170
 Source1:	%{name}.png
 Patch0:		%{name}-FHS+DESTDIR.patch
+Patch1:		%{name}-compile.patch
 URL:		http://spacerocks.sourceforge.net/
 BuildRequires:	SDL-devel
 BuildRequires:	SDL_image-devel
@@ -27,6 +28,7 @@ bezpiecznym dla innych gatunków.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__make} \
